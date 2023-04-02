@@ -1,15 +1,15 @@
 import os
 import AES
+import Admin
+import Hash
 
 
-# 定义获取文件夹中所有文件名的函数
 def get_all(folder):
     path = folder
     files = os.listdir(path)
     return files
 
 
-# 定义判断文件夹是否为空的函数
 def is_empty(folder):
     path = folder
     files = os.listdir(path)
@@ -19,7 +19,6 @@ def is_empty(folder):
         return True
 
 
-# 定义判断文件是否在文件夹中存在的函数
 def is_exist(folder, file):
     path = folder
     files = os.listdir(path)
@@ -29,40 +28,54 @@ def is_exist(folder, file):
         return False
 
 
-# 定义上传文件的函数
+# 给出密钥及文件名 上传文件
 def up(file, key):
     path = 'Input/'
     files = os.listdir(path)
     if file not in files:
-        return 'fail'
+        return '文件不存在'
     if is_exist('Data', file):
-        return 'fail'
+        return '文件夹已有'
     else:
+        # 生成密钥
+        key = bytes.fromhex(Hash.sha(key))
         defile = open(path + file, 'rb')
-        enfile = AES.encrypt(key, defile.read()) # 对文件进行加密
+        enfile = AES.encrypt(key, defile.read())
         defile.close()
         res = open('Data/' + file, 'wb')
-        res.write(enfile) # 将加密后的文件写入到指定文件夹中
+        res.write(enfile)
         res.close()
-        return 'success'
+        return '上传成功'
 
 
-# 定义下载文件的函数
+# 给出密钥及文件名 下载文件
 def down(file, key):
     path = 'Data/'
     files = os.listdir(path)
     if file not in files:
-        return 'fail'
+        return '文件不存在'
     if is_exist('Output', file):
-        return 'fail'
+        return '输出区已有'
     else:
+        # 生成密钥
+        key = bytes.fromhex(Hash.sha(key))
         enfile = open(path + file, 'rb')
-        defile = AES.decrypt(key, enfile.read()) # 对文件进行解密
+        defile = AES.decrypt(key, enfile.read())
         enfile.close()
         res = open('Output/' + file, 'wb')
-        res.write(defile) # 将解密后的文件写入到指定文件夹中
+        res.write(defile)
         res.close()
-        return 'success'
+        return '下载成功'
+
+
+# 过滤留下用户可见的文件
+def filter(user_list):
+    data_list = get_all('Data')
+    # 输入的列表至少有一个元素
+    if not user_list:
+        return []
+    else:
+        return [file for file in user_list if file[0] in data_list]
 
 
 if __name__ == '__main__':

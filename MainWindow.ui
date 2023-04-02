@@ -14,165 +14,574 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 153, 153);</string>
+   </property>
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>50</y>
-      <width>200</width>
-      <height>330</height>
+      <x>100</x>
+      <y>0</y>
+      <width>500</width>
+      <height>400</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(0,0,0);
+	color: rgb(255, 255, 255);
+}
+QPushButton
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+}</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page_user">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <widget class="QPushButton" name="btn_registry">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>140</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>注册</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_login">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>140</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>登录</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="in_username">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>40</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="in_password">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>90</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Normal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>60</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;用户名&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>60</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;密码&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>40</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;当前用户&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_logout">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>140</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>登出</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_user">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>90</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_statue">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>190</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>140</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;当前状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_admin">
+     <widget class="QListView" name="lv_user">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>90</y>
+        <width>120</width>
+        <height>300</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListView" name="lv_folder">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>90</y>
+        <width>120</width>
+        <height>300</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;用户视图&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>20</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;文件夹&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_delete">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>170</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>删除一项</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_folder">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>60</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_userview">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_choose">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>130</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>选择用户</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_add">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>170</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>添加一项</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_open">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>130</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>打开文件夹</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_apply">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>230</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>应用</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_cancle">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>270</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>取消</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_admin">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>60</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>否</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>20</y>
+        <width>120</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;管理员登录&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_file">
+     <widget class="QListView" name="lv_folder_2">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>20</y>
+        <width>120</width>
+        <height>360</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_down">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>下载</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_downview">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>50</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>下载视图</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_up">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>上传</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btn_upview">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>70</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>上传视图</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>290</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;当前文件&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_folder_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_file">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>340</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>190</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;当前文件夹&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lab_statue_2">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>340</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>无</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>290</y>
+        <width>150</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;当前状态&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>60</y>
-      <width>120</width>
-      <height>20</height>
+      <x>0</x>
+      <y>0</y>
+      <width>100</width>
+      <height>400</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>90</y>
-      <width>120</width>
-      <height>20</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(255, 255, 255);
+	background-color: rgb(96, 96, 96);
+	color: rgb(0, 0, 0);
+}
+QFrame
+{
+	background-color: rgb(96, 96, 96);
+}</string>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>130</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
     </property>
-    <property name="text">
-     <string>注册</string>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>110</x>
-      <y>130</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>登录</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>40</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>密码</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>40</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>用户名</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>161</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>29</y>
-      <width>200</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;null&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>50</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>上传视图</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>50</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>下载视图</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>上传</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>130</y>
-      <width>70</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>下载</string>
-    </property>
+    <widget class="QPushButton" name="btn_user">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>用户</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_admin">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>管理员</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btn_file">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>文件</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

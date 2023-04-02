@@ -232,8 +232,8 @@ def decrypt(key: bytes, text: bytes) -> bytes:
 
 
 if __name__ == '__main__':
-    key = bytes.fromhex("000102030405060708090a0b0c0d0e0f")
-    plaintext = bytes.fromhex("00112233445566778899aabbccddeeff")
+    key = bytes.fromhex("a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3")
+    plaintext = bytes.fromhex("")
     ciphertext = encrypt(key, plaintext)
     print(ciphertext.hex())  # 69c4e0d86a7b0430d8cdb78070b4c55a
     print(decrypt(key, ciphertext).hex())  # 00112233445566778899aabbccddeeff
