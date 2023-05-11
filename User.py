@@ -1,6 +1,6 @@
-import File
-import Hash
-import AES
+from . import File
+from . import Hash
+from . import AES
 
 
 # 注册用户

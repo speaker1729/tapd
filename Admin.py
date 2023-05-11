@@ -1,7 +1,7 @@
-import RSA
-import AES
-import Hash
-import File
+from . import RSA
+from . import AES
+from . import Hash
+from . import File
 
 
 # 注册管理员
@@ -26,13 +26,32 @@ def create(password):
     pub.close()
 
 
-# 保存用户的密钥
-def save_key(username, password):
+# 导入公钥
+def pub():
     # 导入公钥
     pub = open('Admin/admin.pub', 'rb')
     n = int.from_bytes(pub.read(1024), 'big')
     e = int.from_bytes(pub.read(1024), 'big')
     pub.close()
+    return e, n
+
+
+# 导入公钥
+def pri(key):
+    # 导入私钥
+    pri = open('Admin/admin.pri', 'rb')
+    file = AES.decrypt(key, pri.read())
+    # 切片操作 左闭右开
+    n = int.from_bytes(file[:1024], 'big')
+    d = int.from_bytes(file[1024:], 'big')
+    pri.close()
+    return d, n
+
+
+# 保存用户的密钥
+def save_key(username, password):
+    # 导入公钥
+    e, n = pub()
     # 将用户密钥转换为整数
     message = int.from_bytes(password.encode('utf-8'), 'big')
     # 写公钥加密后的用户密钥
@@ -46,12 +65,7 @@ def load_key(username, password):
     # 管理员密钥
     key = bytes.fromhex(Hash.sha(password))
     # 导入私钥
-    pri = open('Admin/admin.pri', 'rb')
-    file = AES.decrypt(key, pri.read())
-    # 切片操作 左闭右开
-    n = int.from_bytes(file[:1024], 'big')
-    d = int.from_bytes(file[1024:], 'big')
-    pri.close()
+    d, n = pri(key)
     # 导入加密后的用户密钥
     file = open('Admin/key/' + username, 'r')
     message = int(file.read(), 16)
@@ -65,10 +79,7 @@ def load_key(username, password):
 # 在管理员文件夹内注册文件
 def up(filename, key):
     # 导入公钥
-    pub = open('Admin/admin.pub', 'rb')
-    n = int.from_bytes(pub.read(1024), 'big')
-    e = int.from_bytes(pub.read(1024), 'big')
-    pub.close()
+    e, n = pub()
     # 将文件密钥转换为整数
     message = int.from_bytes(key.encode('utf-8'), 'big')
     # 将文件名与其密钥保存
@@ -82,12 +93,7 @@ def down(filename, password):
     # 管理员密钥
     key = bytes.fromhex(Hash.sha(password))
     # 导入私钥
-    pri = open('Admin/admin.pri', 'rb')
-    file = AES.decrypt(key, pri.read())
-    # 切片操作 左闭右开
-    n = int.from_bytes(file[:1024], 'big')
-    d = int.from_bytes(file[1024:], 'big')
-    pri.close()
+    d, n = pri(key)
     # 导入加密后的文件密钥
     file = open('Admin/dat/' + filename, 'r')
     message = int(file.read(), 16)

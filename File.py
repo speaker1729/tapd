@@ -1,7 +1,6 @@
 import os
-import AES
-import Admin
-import Hash
+from . import AES
+from . import Hash
 
 
 def get_all(folder):
@@ -29,23 +28,35 @@ def is_exist(folder, file):
 
 
 # 给出密钥及文件名 上传文件
-def up(file, key):
-    path = 'Input/'
-    files = os.listdir(path)
-    if file not in files:
-        return '文件不存在'
-    if is_exist('Data', file):
-        return '文件夹已有'
-    else:
+def up(file, key,fullpath=False):
+    if fullpath:
         # 生成密钥
         key = bytes.fromhex(Hash.sha(key))
-        defile = open(path + file, 'rb')
+        defile = open(file, 'rb')
         enfile = AES.encrypt(key, defile.read())
+        base = os.path.basename(file)
         defile.close()
-        res = open('Data/' + file, 'wb')
+        res = open('Data/' + base, 'wb')
         res.write(enfile)
         res.close()
         return '上传成功'
+    else:
+        path = 'Input/'
+        files = os.listdir(path)
+        if file not in files:
+            return '文件不存在'
+        if is_exist('Data', file):
+            return '文件夹已有'
+        else:
+            # 生成密钥
+            key = bytes.fromhex(Hash.sha(key))
+            defile = open(path + file, 'rb')
+            enfile = AES.encrypt(key, defile.read())
+            defile.close()
+            res = open('Data/' + file, 'wb')
+            res.write(enfile)
+            res.close()
+            return '上传成功'
 
 
 # 给出密钥及文件名 下载文件
@@ -83,6 +94,6 @@ if __name__ == '__main__':
     # print(is_exist('Users','123'))
     key = bytes.fromhex("000102030405060708090a0b0c0d0e0f")
     plaintext = bytes.fromhex("00112233445566778899aabbccddeeff")
-    print(up('test', key))
-    print(down('test', key))
+    print(up('test.py', key))
+    print(down('test.py', key))
     pass
